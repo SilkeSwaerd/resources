@@ -11,14 +11,19 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 # Setting my root directory to where I have my /data folder etc. (easier for me, but personalise to your own way of working)
-knitr::opts_knit$set(root.dir = "/Users/pernillebrams/Desktop/AARHUS_UNIVERSITY/instructor_2024/methods-2")
+knitr::opts_knit$set(root.dir = "C:/Users/silke/OneDrive/Skrivbord/Aarhus Universitet/VT24/Methods 2 - General linear model/resources/classes")
+R.Version()
 
 ```
 
 ### Setup
 ```{r}
 # Make sure this guy is installed/updated (if you've alreadygot rstanarm installed, you just need to load it in using either library() or p_load() as below)
+remove.packages("rstanarm")
 install.packages("rstanarm")
+install.packages("ggpubr")
+install.packages("stringr")
+
 library(rstanarm)
 
 # Load the rest
@@ -88,11 +93,22 @@ set.seed(1998) # setting a seed (in the best year ever??) - this way, even thoug
 # rnorm() works like: my_simulated_data <- rnorm(n, mean, sd) - now you go!
 
 # your code here
+
+simulated_data <-  rnorm(10, 4, 2)
+simulated_data
+df <- c(5.606633, 5.542228, 8.032353, 2.124574, 4.928519, 3.909756, 5.454319, 4.178747, 2.317168, 1.483910)
+df
 ```
 
 ## Ex. 0.c) Talk with your group and note in 1-2 sentences: What do we know of the data drawn from the rnorm()? 
 
 ## Ex. 0.d) Data are worth 10000% more if visualised, so let's visualise. Using ggplot, make a histogram visualising the data you simulated.
+
+```{r}
+ggplot(aes(x = df, data = simulated_data)) + 
+  geom_hist()
+```
+
 
 ## Ex. 0.e) Calculate the empirical mean and empirical sd (just fancy words for "calculate the mean and sd of the simulated data") - are they different from the ones you've set? and why might that be?
 
